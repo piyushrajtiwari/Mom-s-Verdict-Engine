@@ -1,34 +1,59 @@
 # 🧠 Mom's Verdict Engine
 
-> Multilingual Product Reviews → Structured Insights with AI
+### Multilingual Product Reviews → Structured Insights with AI
+
+> **Track A Submission — Mumzworld AI Engineering Intern**
+> Built to solve a real e-commerce problem: helping parents make faster and better buying decisions from overwhelming product reviews.
 
 ---
 
-## 📌 Overview
+# 📌 Overview
 
-**Mom’s Verdict Engine** is an AI-powered system that transforms raw customer reviews (English, Arabic, or mixed) into a structured product verdict.
+Parents shopping online often face **review overload** — hundreds of comments, mixed opinions, different languages, and conflicting experiences.
 
-Instead of reading hundreds of reviews manually, users instantly get:
+**Mom’s Verdict Engine** is an AI-powered system that transforms raw customer reviews (English, Arabic, or mixed) into a clear, structured product verdict in seconds.
 
-* ✅ Summary
-* ✅ Pros & Cons
-* ✅ Conflicts between reviewers
-* ✅ Confidence Score
-* ✅ Final Rating
-* ✅ Multilingual Output
+Instead of manually reading reviews, users instantly get:
+
+✅ Summary
+✅ Pros & Cons
+✅ Reviewer Conflicts
+✅ Confidence Score
+✅ Final Rating
+✅ English + Arabic Output
 
 ---
 
-## 🚀 Features
+# 🎯 Why This Matters for Mumzworld
 
-### 🔍 Smart Review Understanding
+Mumzworld customers are busy parents who need quick, trustworthy decisions.
 
-* Handles noisy reviews
+This solution improves the shopping experience by converting unstructured reviews into instant insights.
+
+### Business Impact
+
+* 📈 Faster purchase decisions
+* 🛒 Higher product page conversion rates
+* 🤝 Increased customer trust
+* 🌍 Better Arabic + English accessibility
+* 📉 Reduced bounce caused by decision fatigue
+* ⭐ Stronger review usefulness on product pages
+
+---
+
+# 🚀 Features
+
+## 🔍 Smart Review Understanding
+
+* Handles noisy or short reviews
 * Supports multilingual text
 * Detects spam / irrelevant inputs
 * Finds hidden sentiment patterns
+* Identifies recurring product issues
 
-### 📊 Structured JSON Output
+---
+
+## 📊 Structured JSON Output
 
 Returns:
 
@@ -41,9 +66,11 @@ Returns:
 * `disagreements[]`
 * `unknowns[]`
 
-### ⚙️ LangGraph Pipeline
+---
 
-7-step workflow:
+## ⚙️ LangGraph AI Workflow
+
+7-step agentic pipeline:
 
 1. RAG Retrieval
 2. Pros Extraction
@@ -53,15 +80,29 @@ Returns:
 6. Product Scoring
 7. Final Validation
 
-### 🌍 Multilingual Support
+---
 
-* English
-* Arabic
-* Mixed Reviews
+# 🌍 Multilingual Support
+
+✅ English
+✅ Arabic
+✅ Mixed Reviews
 
 ---
 
-## 📂 Project Structure
+# 🎥 Demo Walkthrough
+
+### GitHub Repository
+
+https://github.com/piyushrajtiwari/Mom-s-Verdict-Engine
+
+### Demo Video
+
+https://drive.google.com/file/d/1gqfFmL44KwiId9jSCZzGFpiZBQdaBmp7/view?usp=sharing
+
+---
+
+# 📂 Project Structure
 
 ```bash
 moms_verdict_engine/
@@ -74,78 +115,78 @@ moms_verdict_engine/
 ├── main.py
 ├── evals.py
 ├── app.py
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## ⚡ Quick Setup
+# ⚡ Quick Setup
 
-### 1️⃣ Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/moms_verdict_engine.git
-cd moms_verdict_engine
+git clone https://github.com/piyushrajtiwari/Mom-s-Verdict-Engine.git
+cd Mom-s-Verdict-Engine
 ```
 
-### 2️⃣ Create Virtual Environment
+## 2️⃣ Create Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-**Windows**
+### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-**Mac/Linux**
+### Mac / Linux
 
 ```bash
 source .venv/bin/activate
 ```
 
-### 3️⃣ Install Requirements
+## 3️⃣ Install Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Configure `.env`
+## 4️⃣ Configure Environment
+
+Create `.env`
 
 ```env
-GROQ_API_KEY=gsk_your_key_here
+GROQ_API_KEY=your_key_here
 GROQ_MODEL=llama-3.3-70b-versatile
 ```
 
-Get free key: https://console.groq.com
+Get free API key:
+https://console.groq.com
 
 ---
 
-## ▶️ Run App
+# ▶️ Run the App
 
 ```bash
 streamlit run app.py
 ```
 
----
-
-## 💻 Run in Terminal
+# 💻 Run in Terminal
 
 ```bash
 python main.py
 ```
 
----
-
-## 🧪 Run Tests
+# 🧪 Run Evaluations
 
 ```bash
 python evals.py
 ```
 
-Single case:
+Single test:
 
 ```bash
 python evals.py --case empty_input
@@ -159,7 +200,7 @@ python evals.py --tag arabic
 
 ---
 
-## 🧠 Architecture
+# 🧠 System Architecture
 
 ```text
 Streamlit UI
@@ -181,7 +222,7 @@ Final JSON Verdict
 
 ---
 
-## 🔥 Output Example
+# 🔥 Example Output
 
 ```json
 {
@@ -216,63 +257,105 @@ Final JSON Verdict
 
 ---
 
-## 🧪 Evaluation Cases
+# 🧪 Validation / Proof It Works
 
-| #  | Case                 | Tags          |
-| -- | -------------------- | ------------- |
-| 1  | all_positive         | positive      |
-| 2  | all_negative         | negative      |
-| 3  | mixed_conflicting    | conflict      |
-| 4  | arabic_heavy         | arabic        |
-| 5  | noisy_spam           | noisy         |
-| 6  | empty_input          | edge          |
-| 7  | direct_contradiction | contradiction |
-| 8  | irrelevant_text      | edge          |
-| 9  | short_reviews        | sparse        |
-| 10 | long_reviews         | verbose       |
-| 11 | single_review        | sparse        |
-| 12 | multilingual_mixed   | mixed         |
+Tested across multiple scenarios:
 
----
+| #  | Case                 | Goal                    |
+| -- | -------------------- | ----------------------- |
+| 1  | all_positive         | Detect strong positives |
+| 2  | all_negative         | Detect negatives        |
+| 3  | mixed_conflicting    | Handle conflicts        |
+| 4  | arabic_heavy         | Arabic understanding    |
+| 5  | noisy_spam           | Ignore spam             |
+| 6  | empty_input          | Graceful fallback       |
+| 7  | direct_contradiction | Detect disagreement     |
+| 8  | irrelevant_text      | Robust filtering        |
+| 9  | short_reviews        | Sparse data handling    |
+| 10 | long_reviews         | Long context handling   |
+| 11 | single_review        | Limited evidence        |
+| 12 | multilingual_mixed   | Mixed language support  |
 
-## ⚡ Supported Groq Models
+### Expected Outcomes
 
-| Model                   | Best For        |
-| ----------------------- | --------------- |
-| llama-3.3-70b-versatile | Best Quality    |
-| llama-3.1-8b-instant    | Fast            |
-| mixtral-8x7b-32768      | Structured JSON |
-
----
-
-## 📈 Why This Project Matters
-
-* ✅ Real-world use case
-* ✅ Modern GenAI stack
-* ✅ Vector Search + LLM
-* ✅ Agentic workflow
-* ✅ Resume-worthy project
-
-Perfect for:
-
-* Data Science Portfolio
-* GenAI Internship
-* AI Engineer Resume
-* Product Demo
+✅ Stable structured JSON
+✅ Useful summaries
+✅ Accurate pros/cons extraction
+✅ Conflict detection
+✅ Graceful handling of weak inputs
 
 ---
 
-## 🔮 Future Improvements
+# ⚖️ Tradeoffs & Decisions
+
+### Why Groq API?
+
+Used Groq because it offers fast inference with free-tier access.
+
+### Why FAISS?
+
+Simple, lightweight local vector database with no external dependency.
+
+### Why LangGraph?
+
+Better for multi-step workflows than a single prompt call.
+
+### Known Limitations
+
+* LLM outputs may vary slightly between runs
+* Very limited review data reduces confidence
+* Sarcasm / vague comments can be harder to interpret
+
+### Design Priority
+
+Focused on:
+
+* Explainability
+* Structured outputs
+* Real business usefulness
+* Fast prototype delivery
+
+---
+
+# 🛠️ Tools & Tech Stack
+
+| Category   | Tools                 |
+| ---------- | --------------------- |
+| Language   | Python                |
+| LLM        | Groq API              |
+| Workflow   | LangGraph             |
+| Retrieval  | FAISS                 |
+| Embeddings | sentence-transformers |
+| UI         | Streamlit             |
+| Config     | dotenv                |
+
+---
+
+# 🤖 AI Tools & Workflow Transparency
+
+Used AI tools responsibly during development:
+
+* ChatGPT → brainstorming, debugging
+* Groq API → model inference
+* Sentence Transformers → embeddings
+* LangGraph → orchestration
+* Streamlit → frontend prototype
+
+All final implementation, integration, testing, and customization were completed by me.
+
+
+# 🔮 Future Improvements
 
 * Hindi support 🇮🇳
 * Dashboard analytics
 * Sentiment charts
-* PDF reports
 * Human feedback loop
+* Product comparison mode
+* Review trend tracking
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
 1. Fork repo
 2. Create branch
@@ -281,12 +364,13 @@ Perfect for:
 
 ---
 
-## 📜 License
+# 📜 License
 
 MIT License
 
 ---
 
-## ⭐ Star This Repo
+# ⭐ Final Note
 
-Made with ❤️ using Python + AI
+Built with ❤️ using Python + AI
+For the Mumzworld AI Engineering Intern Challenge
